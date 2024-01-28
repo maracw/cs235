@@ -1,0 +1,98 @@
+JSBasics
+let|+
+Correct
+
+JSArrays
+[|]|1|length
+Correct
+
+Objects
+
+{|}|firstName|age|`|`
+
+JSON
+pets|Tweety|dog
+name|data
+pets|i
+
+Code:tPvwC0jLE
+
+function displayPets() {
+  const data = {
+    "name": "Pooja",
+    "pets": { 
+      "bird": "Tweety",
+      "cat": "Shadow",
+      "dog": "Fido"
+    }
+  }
+
+  console.log(`${data.name
+} has the following pets.`);
+  for (let i in data.pets) {
+    console.log(`  ${data.pets[i]}`);
+  }
+}
+
+displayPets();
+
+Functions
+
+Code: CrUojZJyf
+console.log('Expected: The sum of 2 and 3 is 5.')
+
+function displaySum(num1, num2){
+
+  let sum = num1+num2;
+  console.log(`The sum of ${num1} and ${num2} is ${sum}.`);
+  
+}
+
+displaySum(2,3);
+
+
+isPrime
+
+function isPrime(num){
+
+  let result = true;
+
+  
+  if(result==true){
+    console.log(`The number ${num} is prime.`);
+  }
+  else{
+    console.log(`The number ${num} is not prime.`);
+  }
+}
+
+isPrime(3);
+
+function isPrime(num){
+
+  let result = true;
+  for(let i=2; num>i && result===true; i++){
+    result = num%i!==0? true : false;
+    console.log(num + ' divided by ' + i);
+  }
+
+  if(result){
+    console.log(`The number ${num} is prime.`);
+  }
+  else{
+    console.log(`The number ${num} is NOT prime.`);
+  }
+}
+
+isPrime(25);
+
+code: SdBOYPyiG
+
+
+Arrow function
+dDi2sPmv8
+let displayNext = (x) => console.log(`The number after ${x} is ${x+1}.`);
+
+
+Flag JSHiOrder 
+map

@@ -1,0 +1,85 @@
+<a>|a>|<h1>|h1>|<br>|<hr>|<pre>|pre>
+HTMLTag1 - X
+<a|a>|<h1>|h1>|<br>|<hr>|<pre>|pre>
+
+HTMLTag1Line1
+<a>|a>
+HTMLTag1Line2
+<h1>|h1>
+HTMLTag1Line3
+<br>
+HTMLTag1Line4
+<hr>
+HTMLTag1Line5
+<pre>|pre>
+
+
+<a|a>|<h1>|h1>|<br>|<hr>|<pre>|pre>
+
+HTMLTag2 - done
+<strong>|strong>|<em>|em>|<sup>|<!--|-->
+
+HTMLAttr - done
+title|alt|href|_blank|src
+
+HTMLStyle1 - done
+color|font-size|style|text-align|center
+
+HTMLStyle2 - X
+color|blue|background-color|ff0000|0|255|0
+or
+color|blue|background-color|f00|0|255|0
+
+HTMLParagraph - done
+<p>Hello World</p>
+code = EoPYN3bkH
+
+HTMLTable - done
+flag = CrUojZJyf
+
+HTMLOrdList 
+7SU0js5gG
+
+HTMLUnOrdList - done
+flag = RsAaQkFTj
+
+HTMLForm 
+
+HTMLChecker
+Scope	
+
+CSS
+CSSExternal
+stylesheet|href|css
+
+CSSInternal
+style
+
+CSSInline
+style|color|red
+
+Table Style
+CSSTH
+5px|DarkRed|GhostWhite|text-align
+
+CSSTD
+5px|3px|solid|black|text-align
+
+CSSTR1
+nth-child|even|GhostWhite|last-child
+
+
+CSSTR2Line1
+td|first-child
+
+CSSTR2Line2
+td|last-child
+
+CSSTR2Line3
+border-right
+
+
+5px|DarkRed|GhostWhite|text-align|
+5px|3px|solid|black|text-align|
+nth-child|even|GhostWhite|last-child|
+td|first-child|td|last-child|border-right

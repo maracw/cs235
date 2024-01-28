@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practice on Arrays</h1>
+    <p id="demo">Display the result here.</p> 
+    <p id="demo2">Display the result here.</p> 
+    <button id="button" onclick="changeButton()" onmouseover="mouse()">Button</button>
+
+<script>
+  var age = 25;
+  if (age > 18) {
+      document.getElementById("demo").innerHTML = "Maybe";
+  } else {
+      document.getElementById("demo").innerHTML = "Could";
+  }
+
+  var text = "";
+for (i = 0; i <= 3; i++) { 
+  text += i + " ";
+}
+function changeButton(){
+    document.getElementById("button").innerHTML = "new button text";
+}
+document.getElementById("demo2").innerHTML = text;
+function mouse(){
+    const newP = document.createElement("p");
+    newP.innerText = "Look";
+    document.body.append(newP);
+}
+
+</script>
+
+    <script src="week2.js"></script>
+</body>
+</html>
