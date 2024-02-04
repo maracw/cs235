@@ -61,3 +61,9 @@ To resolve this issue, I updated the project on my computer to Expo 49 by runnin
 
   npm install expo@49
   npx expo install --fix
+
+
+### Progress
+finished app set up and git set up
+finished first button on Home screen - unsure of directions
+next ste is HikeDetail component
