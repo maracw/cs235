@@ -18,7 +18,8 @@ function displayNameAge( {name, age}
 const HomeScreen = ({navigation}) => {
 
   return <View>
-    <Text style={styles.text}>This is a view. I have {petCnt} pets.</Text>
+    <Text style={styles.text}>This is Mara's rn-starter App.</Text>
+    <Text>It is connected to her github account</Text>
       <Button
         onPress={()=> navigation.navigate ('About')} 
         title='Go to About Screen' />
