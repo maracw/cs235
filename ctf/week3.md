@@ -36,11 +36,11 @@ RNBProp
 RNBDispVar
 : <Text>I have {petCnt} pets.
 
-RNBDispProp (MISSING)
-:
+RNBDispProp 
+: 7wv3Xee3S
 
 RNBDestruct (WRONG)
-: {'name', 'age'}
+: d5S6RccrS for {name, age}
 
 The code for this is
 
@@ -100,3 +100,54 @@ We write in JSX, but Babel converts it into plain JS.
 AppNavigator? Comes from React Navigation library.
 
 Stylesheet.create? This function call will validate the style rule before trying to apply it. But you could also apply it directly inline. The error message is easier to read when you use the Stylesheet object.
+
+
+## Lists and FlatList
+Needs 2 props: the data (the array of objects) and renderItem (a function)
+Works like mapping in regular React - use the FlatList instead
+FlatList is a RN primative
+
+when adding the render item
+if you use element on its own you get 
+renderItem(element) => {element === {item : {name : 'friend'}, index : 0}}
+
+pull out the item with destructuring
+renderItem({item}) => {item === {name : 'friend'}}
+
+### It needs a KEY 
+if list changes - RN will reload the whole list if no key
+with key - only that element to be changed
+important with long lists/ complex objects
+improves performance with dynamic data
+
+### how to add a KEY
+add a key property to each list item
+must be a UNIQUE STRING that is consistent i.e. key ='1', key ='2'
+
+or
+use keyExtractor prop
+keyExtractor = {friend => {friend.name}}
+the thing must also be unique string
+### Horizontal scroll
+use prop horizontal (word is equal to horizontal ={true})
+and hide scrollbar
+        showsHorizontalScrollIndicator={false}
+
+
+## STYLES
+
+instead of margin-bottom, use marginVertical
+can't use em, can use %
+
+
+## random JSX
+can't use Text element to show an entire jsx object
+you can also have variable that is a Text element
+only one semicolon 
+
+you can use 
+return ( Some JSX tag )
+or return JSX tag
+NOT return followed by new line
+return 
+  SOME JSX
