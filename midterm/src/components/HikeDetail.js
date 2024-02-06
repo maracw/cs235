@@ -15,14 +15,17 @@ const baseFontSize = 16;
 
 const styles = StyleSheet.create({
     image: {
-        borderRadius : 10
+        borderRadius : 10,
+        resizeMode: 'cover',
+        width:'80%',
+        height:150
     },
     container: {
         padding : 10,
-        alugnItems: 'center'
+        alignItems: 'center'
     },
     title :{
-        fontSize : 20,
+        fontSize : 1.1*baseFontSize,
         fontWeight : 'bold'
     }
 

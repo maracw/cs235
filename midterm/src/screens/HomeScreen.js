@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, Button } from "react-native";
 
 /*color property in Button set to white for iPhone styling, backgroung color set inside styles.buttonContainer*/ 
 
@@ -9,12 +9,12 @@ const HomeScreen = ({navigation}) => {
     <Text style={styles.titleText}>Hiker's Guide</Text>
 
     <View style={styles.buttonContainer} >
-      <Button title = "Local Hikes Button inside View" 
+      <Button title = "Local Hikes" 
       onPress={()=> navigation.navigate ('Local')}
       color = '#fff'></Button>
     </View>
     <View style={styles.buttonContainer} >
-      <Button title = "Favorite Hikes" 
+      <Button title = "Favorite Hike" 
       onPress={()=> navigation.navigate ('Favorite')}
       color = '#fff'></Button>
     </View>
