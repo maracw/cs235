@@ -1,14 +1,13 @@
 import React from "react";
 import {View, Text, StyleSheet, Image} from "react-native";
 
-const ImageDetail = ({title, imageSource, rating}) => {
-    //const imagePath = '../../assets/' + {imageSource};
+const ImageDetail = ({imageSource, rating, title}) => {
+
     return <View style={styles.view}>
         <Text style={styles.title}>{title}</Text>
         <Image source={imageSource}></Image>
         <Text>Rating : {rating}</Text>
-    </View>;
-};
+    </View>;}
 
 const styles = StyleSheet.create({
     view : {
