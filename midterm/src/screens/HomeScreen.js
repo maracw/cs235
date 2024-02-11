@@ -1,13 +1,11 @@
 import React from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 
-/*color property in Button set to white for iPhone styling, backgroung color set inside styles.buttonContainer*/ 
+/*color property in Button set to white for iPhone styling, background color set inside styles.buttonContainer*/ 
 
 const HomeScreen = ({navigation}) => {
-
   return <View>
     <Text style={styles.titleText}>Hiker's Guide</Text>
-
     <View style={styles.buttonContainer} >
       <Button title = "Local Hikes" 
       onPress={()=> navigation.navigate ('Local')}
@@ -19,7 +17,6 @@ const HomeScreen = ({navigation}) => {
       color = '#fff'></Button>
     </View>
   </View>
-
 };
 
 const styles = StyleSheet.create({
