@@ -40,3 +40,7 @@ when app starts go fetch the list, and fetch when user presses refresh button
 const [counter, setCounter] =useState(0);
 
 array uses destructuring to create variable and a setter
+
+
+## More on style vs props
+Some components have PROPS that control appearance, like color for Button, backgroundColor for View
