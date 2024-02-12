@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import CounterScreen from './src/screens/CounterScreen';
+import ColorScreen from './src/screens/ColorScreen';
 
 export default function App() {
   return (
-    <CounterScreen></CounterScreen>
+    // <CounterScreen></CounterScreen>
+    <ColorScreen></ColorScreen>
   );
 }
 
