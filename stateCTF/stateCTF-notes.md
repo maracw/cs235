@@ -44,3 +44,9 @@ array uses destructuring to create variable and a setter
 
 ## More on style vs props
 Some components have PROPS that control appearance, like color for Button, backgroundColor for View
+
+## color in RN
+
+can make a view with a set height and width and then add a backgroundColor property with an RGB value
+
+for color app - make a siece of state that will be an array of strings with rgb values
