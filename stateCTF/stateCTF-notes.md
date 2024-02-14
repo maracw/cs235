@@ -50,3 +50,18 @@ Some components have PROPS that control appearance, like color for Button, backg
 can make a view with a set height and width and then add a backgroundColor property with an RGB value
 
 for color app - make a siece of state that will be an array of strings with rgb values
+
+# CTF Answers
+
+
+RNSApp flag is Ams5tfwN5
+
+
+## set color functions
+
+### reducers - like state kind of...
+
+like a useEffect.. kind of.. it watches for a state change AND when the state changes - it calls a special function (called a reducer) to handle what happens next, When you call a reducer function  you use dispatch (kind of like a setter). YOu can name the reduce function anything you want, but dispatch needs to be the same. AND reducer is a good default name to use
+When you call dispatch you send a set of key value pairs (like properties) that can be used by the reducer function
+
+standard names for properties sent to reducer is type and payload
