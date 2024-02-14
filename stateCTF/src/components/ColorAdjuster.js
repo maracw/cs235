@@ -5,13 +5,13 @@ const ColorAdjuster =({color, onIncrease, onDecrease}) =>{
 
 
     return (<View style={styles.buttonContainer}>
+        <Text>{color}</Text>
         <Button title={`INCREASE ${color}`}
             onPress={()=>{
                 {onIncrease ({color})}
                 }}/>
         <Button title={`DECREASE ${color}`}
             onPress={()=>{
-                console.log ({color});
                 {onDecrease({color})}
                 }}></Button>
         </View>)

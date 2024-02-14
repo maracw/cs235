@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet} from 'react-native';
-import ColorAdjuster from "./ColorScreen";
+import SquareScreen from "./SquareScreen";
 
 const HomeScreen = ()=>{
     return <View style={styles.container}>
         <Text>Home Screen !!</Text>
-        <ColorAdjuster></ColorAdjuster>
+       <SquareScreen></SquareScreen>
     </View>
 };
 
