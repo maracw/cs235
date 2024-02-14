@@ -7,11 +7,11 @@ const ColorScreen = ()=>{
     const [colors, setColors] = useState([]);
 
     const onIncrease =({color})=>{
-        console.log('MOre' + color);
+        console.log('More ' + color);
     };
 
     const onDecrease=({color})=>{
-        console.log('less' + color);
+        console.log('Less ' + color);
     };
 
     return <View style={styles.container}>
