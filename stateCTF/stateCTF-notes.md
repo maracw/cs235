@@ -56,6 +56,8 @@ for color app - make a siece of state that will be an array of strings with rgb 
 
 RNSApp flag is Ams5tfwN5
 
+RNSColorAdjuster is eYwY2wOol
+
 
 ## set color functions
 
