@@ -82,7 +82,7 @@ RNLBox1
 box1|10|30|20
 
 RNLBox2
-marginHorizontal|paddingVertical|0|20
+box2|marginHorizontal|paddingVertical|0|20
 -incorrect likely 3rd answer
 
 marginHorizontal|paddingVertical|0|20
@@ -93,6 +93,8 @@ correct
 
 Flag RNLPos2 
 box2|relative|0|0
+
+box2|relative|30|20
 -needs email
 
 RNLFlexBox1
@@ -100,7 +102,7 @@ answer is row - BUT the RN code is not showing that
 
 
 justifyContent|flex-end|center|space-around|space-between|space-evenly
-correct
+
 
 justifyContent|flex-end|justifyContent|center|justifyContent|space-around|justifyContent|space-between|justifyContent|space-evenly
 
