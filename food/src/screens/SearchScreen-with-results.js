@@ -32,7 +32,12 @@ const SearchScreen =()=>{
         </SearchBar>
         <Text>search: {term==''? 'default': {term}}</Text>
         {hasResults? <Text>Number of results : {results.length}</Text> : <Text>{errorMessage}</Text> }
-      
+        <ResultsList title = 'Cost Effective'
+            results={filterResultsByPrice('$')}/>
+        <ResultsList title = 'Bit Spendier'
+            results={filterResultsByPrice('$$')}/>
+        <ResultsList title = 'Fancy Eats'
+            results={filterResultsByPrice('$$$')}/>
     </View>
 };
 
