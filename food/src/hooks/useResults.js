@@ -30,7 +30,6 @@ export default ()=>{
    //useEffect with two arguments - function, empty array
 
     useEffect(()=>{
-        console.log('useEffect called');
         searchApi('pizza');
     }, []);
 

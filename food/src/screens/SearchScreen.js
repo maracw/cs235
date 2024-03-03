@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from "react";
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
 import useResults from "../hooks/useResults";
 import SearchBar from "../components/SearchBar";
-import yelp from "../api/yelp";
 import ResultsList from "../components/ResultsList";
 
-
+    
 const SearchScreen =()=>{
    
     const [term, setTerm] = useState('');
     const [searchApi, results, errorMessage] = useResults();
-
 
     const hasResults = results.length>0? true : false;
 
@@ -21,8 +19,7 @@ const SearchScreen =()=>{
         });
     };
 
-    return <View>
-        <Text>Search Screen</Text>
+    return <View style={{flex:1}}>
         <SearchBar
             autoCapitalize='false'
             autoCorrect='false'
@@ -30,12 +27,23 @@ const SearchScreen =()=>{
             onTermChange={(term)=>{setTerm(term)}}
             onTermSubmit={()=>{searchApi(term)}}>
         </SearchBar>
-        <Text>search: {term==''? 'default': {term}}</Text>
-        {hasResults? <Text>Number of results : {results.length}</Text> : <Text>{errorMessage}</Text> }
-      
+        {hasResults? <Text style={styles.textStyle}>Number of results : {results.length}</Text> : <Text style={styles.textStyle} >{errorMessage}</Text> }
+        <ScrollView>
+            <ResultsList title = 'Cost Effective'
+                results={filterResultsByPrice('$')}/>
+            <ResultsList title = 'Bit Spendier'
+                results={filterResultsByPrice('$$')}/>
+            <ResultsList title = 'Fancy Eats'
+                results={filterResultsByPrice('$$$')}/>
+        </ScrollView>
+        
     </View>
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    textStyle :{
+        marginLeft: 10,
+    }
+});
 
 export default SearchScreen;
