@@ -23,3 +23,16 @@ Byj_FOnSQ_1280.jpg
 https://api.thedogapi.com/v1/images/Byj_FOnSQ
 
 RNAParam
+?has_breeds=1
+
+RNAParam2
+&limit=5&has_breeds=1
+
+RNAKeyError
+400
+
+RNAuseResults 
+DGeZ02vvj
+
+RNAResultsSS 
+gb4c6aZx1

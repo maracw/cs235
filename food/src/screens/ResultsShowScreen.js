@@ -10,7 +10,7 @@ const ResultsShowScreen = ({navigation})=>{
     const getResult = async id=>{
         console.log(!result);
         const response = await yelp.get(`/${id}`);
-        setResult(response.data);
+         setResult(response.data);
         console.log(!result);
     };
 
