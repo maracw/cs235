@@ -42,7 +42,7 @@ const SearchScreen =()=>{
 
 const styles = StyleSheet.create({
     textStyle :{
-        marginLeft: 10,
+        marginLeft: 15,
     }
 });
 
