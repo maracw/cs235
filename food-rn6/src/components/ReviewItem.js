@@ -1,45 +1,17 @@
 import React from "react";
 import {View, Text, StyleSheet, Image} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import StarDisplay from "./StarDisplay";
+
+const YELP_SCALE = 5;
 
 const ReviewItem = ({review}) =>{
-
-    const starsArray = (rating) =>{
-        //make an empty array
-        //add 'star' to the array if the rating is >1
-        //else add 'star-half-empty' if the rating is between 0-1
-        //else add a 'star-o' to the array
-        //decrement rating before running the loop again
-        //return the finished array
-        //then use .map inside a View to return a FontAwesome element with the correct name
-
-        let arr = [];
-        
-        for (let i = 0; i<5; i++) {
-            if (rating>=1){
-                arr.push('star');
-            }
-            else if (rating>0 && rating<1){
-                arr.push('star-half-empty');
-            }
-            else{
-                arr.push('star-o');
-            }
-            rating--;
-        }
-        return arr;
-    };
 
     return (
         <View style={styles.containerStyle}>
             <View style={styles.userStyle}>
                 <Image source={{uri : review.user.image_url}} style={styles.imageStyle}></Image>
                 <Text>{review.user.name}</Text>
-                <View style={styles.starsStyle}>
-                    {starsArray(review.rating).map((iconName)=>{
-                        return <FontAwesome name={iconName} size={16} color="gold" ></FontAwesome>
-                    })}
-                </View>
+                <StarDisplay rating={review.rating} scale={YELP_SCALE} />
             </View>
             
             <Text style={styles.textStyle}>{review.text}</Text>
@@ -59,9 +31,6 @@ const styles = StyleSheet.create({
     userStyle :{
         flex:.25,
         justifyContent: 'flex-end'
-    },
-    starsStyle :{
-        flexDirection: 'row',
     },
     imageStyle :{
         width: 50,
