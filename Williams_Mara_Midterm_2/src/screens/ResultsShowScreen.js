@@ -13,8 +13,8 @@ const ResultsShowScreen = ({ route }) => {
   
   //sample code from https://www.devsamples.com/javascript/react-native/make-call-when-phone-number-clicked
   const callPhoneNumber = async (number) => {
-    //const phoneNumber = `${Platform.OS !== 'android' ? 'telprompt' : 'tel'}:${number}`;  
-    const phoneNumber = `tel: ${number}`;
+    const phoneNumber = `${Platform.OS !== 'android' ? 'telprompt' : 'tel'}:${number}`;  
+
     try {
         const supported = await Linking.canOpenURL(phoneNumber);
         console.log(phoneNumber +' can open is ' + supported);
