@@ -2,25 +2,18 @@ import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 
-const BodyPart = ({position, partList, index}) => {
+const BodyPart = ({position, partList, index, onMonsterChange}) => {
     
     const [monsterIndex, setMonsterIndex] = useState(index);
     const [monsterPart, setMonsterPart] = useState(partList[monsterIndex]);
 
-    //console.log('Part list is null ' + !partList);
-    // const initialMonsterPart = ()=>{
-    //     if(!monsterPart){
-    //         setMonsterPart(partList[monsterIndex]);
-    //         console.log(monsterPart.fullName); 
-    //     }
-
-    // };
    
     function onPressLeft () {
         if(monsterIndex > 0){
             setMonsterIndex(monsterIndex - 1);
             newPart = partList[monsterIndex-1];
             setMonsterPart(newPart);
+            onMonsterChange(position, "previous");
         }
         else {
              console.log('cannot go back index is ' + monsterIndex);
@@ -28,16 +21,18 @@ const BodyPart = ({position, partList, index}) => {
     };
 
     const onPressRight =()=>{
-        console.log('right pressed for ' + monsterPart.fullName + ' monster # ' + monsterIndex);
+      
        if(monsterIndex < partList.length-1){
             console.log('can go forward');
             setMonsterIndex(monsterIndex + 1);
             newPart = partList[monsterIndex + 1];
             setMonsterPart(newPart);
-            console.log('Monster is now' + newPart.fullName);
+            //console.log('Monster is now' + newPart.fullName);
+            console.log("sending back to build screen to change");
+            onMonsterChange(position, "next");
         }
         else {
-            console.log('cannot go forward index is ' + monsterIndex);
+            console.log('No reload - cannot go forward index is ' + monsterIndex);
         }
     }
    
