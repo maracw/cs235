@@ -2,32 +2,42 @@ import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 
-const BodyPart = ({position, monsterIndex, partList}) => {
-    const [part, setPart] = useState(partList[monsterIndex]);
-    const [monsterIndex, setMonsterIndex] = useState(monsterIndex);
+const BodyPart = ({position, partList, index}) => {
+    
+    const [monsterIndex, setMonsterIndex] = useState(index);
+    const [monsterPart, setMonsterPart] = useState(partList[monsterIndex]);
 
+    //console.log('Part list is null ' + !partList);
+    // const initialMonsterPart = ()=>{
+    //     if(!monsterPart){
+    //         setMonsterPart(partList[monsterIndex]);
+    //         console.log(monsterPart.fullName); 
+    //     }
+
+    // };
    
     function onPressLeft () {
-        console.log('left pressed' + part.id);
-        if(id >1){
-            console.log('can go back');
-            setMonsterIndex(part.id-1);
-            console.log('Monster index is ' + monsterIndex);
+        if(monsterIndex > 0){
+            setMonsterIndex(monsterIndex - 1);
+            newPart = partList[monsterIndex-1];
+            setMonsterPart(newPart);
         }
         else {
-            console.log('cannot go back');
+             console.log('cannot go back index is ' + monsterIndex);
         }
     };
 
     const onPressRight =()=>{
-        console.log('right pressed for ' + part.fullName + ' monster # ' + part.id);
-        if(monsterIndex < partList.length){
+        console.log('right pressed for ' + monsterPart.fullName + ' monster # ' + monsterIndex);
+       if(monsterIndex < partList.length-1){
             console.log('can go forward');
-            setMonsterIndex(monsterIndex+1);
-            console.log('Monster index is ' + monsterIndex);
+            setMonsterIndex(monsterIndex + 1);
+            newPart = partList[monsterIndex + 1];
+            setMonsterPart(newPart);
+            console.log('Monster is now' + newPart.fullName);
         }
         else {
-            console.log('cannot go forward');
+            console.log('cannot go forward index is ' + monsterIndex);
         }
     }
    
@@ -40,17 +50,18 @@ const BodyPart = ({position, monsterIndex, partList}) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: monster.tempBgColor,
-            borderColor: monster.tempBorderColor
+            backgroundColor: monsterPart.tempBgColor,
+            borderColor: monsterPart.tempBorderColor
 
         }}>
-            <TouchableOpacity onPress={()=>{onPressLeft(monster.id)}}>
-                <Text>Left!</Text>
+            <TouchableOpacity onPress={()=>{onPressLeft()}}>
+                <Text>Previous!</Text>
             </TouchableOpacity>
-            <Text style={{fontSize: 32, fontWeight: 'bold'}}>{partName} {position}</Text>
+            <Text style={{fontSize: 32, fontWeight: 'bold'}}>{monsterPart.namePart} {monsterIndex}</Text>
             <TouchableOpacity onPress={()=>{onPressRight()}}>
-                <Text>Right</Text>
+                <Text>Next!</Text>
             </TouchableOpacity>
+
         </View>
     );
 };

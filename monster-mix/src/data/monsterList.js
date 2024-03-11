@@ -1,6 +1,6 @@
 export default monsterList =[
     {
-        id: 1,
+        id: 0,
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
@@ -13,7 +13,7 @@ export default monsterList =[
         bottomName: 'LA',
     },
     {
-        id: 2,
+        id: 1,
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
@@ -22,7 +22,7 @@ export default monsterList =[
         bottomName: 'CORN',
     },
     {
-        id: 3,
+        id: 2,
         fullName: 'Jackalope',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',

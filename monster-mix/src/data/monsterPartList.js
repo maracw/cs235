@@ -1,20 +1,20 @@
 const topMonsterParts =[
     {
-        id: 1,
+        id: 0,
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
         namePart: 'DRA'
     },
     {
-        id: 2,
+        id: 1,
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'U',
     },
     {
-        id: 3,
+        id: 2,
         fullName: 'Jackalope',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
@@ -24,21 +24,21 @@ const topMonsterParts =[
 
 const midMonsterParts = [
     {
-        id: 1,
+        id: 0,
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
         namePart: 'CU'
     },
     {
-        id: 2,
+        id: 1,
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'NI',
     },
     {
-        id: 3,
+        id: 2,
         fullName: 'Jackalope',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
@@ -48,25 +48,25 @@ const midMonsterParts = [
 
 const bottomMonsterParts = [
     {
-        id: 1,
+        id: 0,
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
         namePart: 'LA'
     },
     {
-        id: 2,
+        id: 1,
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'CORN',
     },
     {
-        id: 3,
+        id: 2,
         fullName: 'Jackalope',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
         namePart: 'LOPE',
     },];
 
-export default {topMonsterParts, midMonsterParts, bottomMonsterParts};
+export {topMonsterParts, midMonsterParts, bottomMonsterParts};
