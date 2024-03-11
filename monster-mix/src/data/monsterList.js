@@ -4,6 +4,10 @@ export default monsterList =[
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
+        top :{
+            topName: 'DRA',
+            topImg : 'draculaTop.png'
+        },
         topName: 'DRA',
         midName: 'CU',
         bottomName: 'LA',

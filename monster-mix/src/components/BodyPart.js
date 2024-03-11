@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 
-const BodyPart = ({onPressLeft,onPressRight, position, monster}) => {
-    let partName;
+const BodyPart = ({position, monsterIndex, partList}) => {
+    const [part, setPart] = useState(partList[monsterIndex]);
+    const [monsterIndex, setMonsterIndex] = useState(monsterIndex);
 
-        if (position=="top"){
-            console.log(monster.fullName);
-            partName = monster.topName;
-        }
-        else if (position=="middle"){
-            partName=monster.midName;
+   
+    function onPressLeft () {
+        console.log('left pressed' + part.id);
+        if(id >1){
+            console.log('can go back');
+            setMonsterIndex(part.id-1);
+            console.log('Monster index is ' + monsterIndex);
         }
         else {
-            partName=monster.bottomName;
+            console.log('cannot go back');
         }
-        console.log(partName +' '+ monster.fullName);
+    };
 
+    const onPressRight =()=>{
+        console.log('right pressed for ' + part.fullName + ' monster # ' + part.id);
+        if(monsterIndex < partList.length){
+            console.log('can go forward');
+            setMonsterIndex(monsterIndex+1);
+            console.log('Monster index is ' + monsterIndex);
+        }
+        else {
+            console.log('cannot go forward');
+        }
+    }
+   
     return (
         <View style={ {
             height: 100,
@@ -34,7 +48,7 @@ const BodyPart = ({onPressLeft,onPressRight, position, monster}) => {
                 <Text>Left!</Text>
             </TouchableOpacity>
             <Text style={{fontSize: 32, fontWeight: 'bold'}}>{partName} {position}</Text>
-            <TouchableOpacity onPress={()=>{onPressRight(monster.fullName)}}>
+            <TouchableOpacity onPress={()=>{onPressRight()}}>
                 <Text>Right</Text>
             </TouchableOpacity>
         </View>
