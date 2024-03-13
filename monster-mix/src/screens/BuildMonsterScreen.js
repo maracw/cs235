@@ -13,29 +13,34 @@ const BuildMonsterScreen = ()=>{
     const [testCount, setTestCount] = useState(0);
     const [monsterName, setMonsterName] = useState("Marty");
 
-    console.log("reloaded top is " +topIndex + " mid is " + midIndex + " bottom is " + bottomIndex);
-    console.log("test count is " + testCount);
+    console.log("LINE 16 reloaded top is " +topIndex + " mid is " + midIndex + " bottom is " + bottomIndex);
+    //console.log("test count is " + testCount);
 
     const randomMonster = ()=>{
         const top = Math.floor(Math.random()*3);
+        const middle = Math.floor(Math.random()*3);
+        const bottom = Math.floor(Math.random()*3);
+        console.log(top + ' ' + middle + ' ' + bottom);
+        setBottomIndex(bottom);
+        setMidIndex(middle);
         setTopIndex(top);
     }
 
-    function changeMonsterIndexUp (position, direction) {
-        console.log("change called in parent for " + position);
+   async function changeMonsterIndex (position, direction) {
+        console.log("change called in parent for " + position + ' '+ direction);
         if (position=="top"){
-            console.log(topIndex);
-            direction=="next"? setTopIndex(topIndex+1) : setTopIndex(topIndex-1);
+            console.log('inside first block');
+            direction=="next"? await setTopIndex(topIndex+1) : await setTopIndex(topIndex-1);
+            console.log("LINE 34 changed top to " + topIndex);
             //topIndex<topMonsterParts.length? setTopIndex(topIndex + 1) : console.log("cannot go next for " + {position});
         }
         else if(position=="middle"){
-            console.log(midIndex);
             direction=="next"? setMidIndex(midIndex+1) : setMidIndex(midIndex-1);
         }
         else {
-            console.log(bottomIndex);
             direction=="next"? setBottomIndex(bottomIndex+1) : setBottomIndex(bottomIndex-1);
         }
+        //console.log("LINE 41 changed top to " + topIndex);
     };
 
     const resetMonsterParts = () =>{
@@ -61,13 +66,26 @@ const BuildMonsterScreen = ()=>{
             //onTermSubmit={(monsterName)=>{setTerm(monsterName)}}
             ></TextInput>
             <Text>Name: {monsterName}</Text>
-            <BodyPart partList={topMonsterParts} position="top" index={topIndex} onMonsterChange={changeMonsterIndexUp}/>
-            <BodyPart partList={midMonsterParts} position="middle" index={midIndex} onMonsterChange={changeMonsterIndexUp}/>
-            <BodyPart partList={bottomMonsterParts} position="bottom"  index={bottomIndex} onMonsterChange={changeMonsterIndexUp}/> 
+            <BodyPart 
+            partList={topMonsterParts} 
+                position="top" 
+                index={topIndex} 
+                onMonsterChange={changeMonsterIndex}/>
+            <BodyPart 
+                partList={midMonsterParts} 
+                position="middle" 
+                index={midIndex} 
+                onMonsterChange={changeMonsterIndex}/>
+            <BodyPart 
+                partList={bottomMonsterParts} 
+                position="bottom"  
+                index={bottomIndex} 
+                onMonsterChange={changeMonsterIndex}/> 
 
             <Button title="reset" onPress={()=>{resetMonsterParts()}}></Button>
             <Text>Test count is {testCount}</Text>
-            
+            <Button title="RANDOM" onPress={()=>{randomMonster()}}></Button>
+
         </View>
 
     );

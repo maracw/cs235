@@ -5,43 +5,34 @@ import MonsterImage from "./MonsterImage";
 
 const BodyPart = ({position, partList, index, onMonsterChange}) => {
     
-    const [monsterIndex, setMonsterIndex] = useState(index);
-    const [monsterPart, setMonsterPart] = useState(partList[monsterIndex]);
+    //const [monsterIndex, setMonsterIndex] = useState(index);
+    //const [monsterPart, setMonsterPart] = useState(partList[index]);
+    //no longer state
+    const monsterPart = partList[index];
 
    
     function onPressLeft () {
-        if(monsterIndex > 0){
-            setMonsterIndex(monsterIndex - 1);
-            newPart = partList[monsterIndex-1];
-            setMonsterPart(newPart);
+        if(index > 0){
             onMonsterChange(position, "previous");
         }
         else {
-             console.log('cannot go back index is ' + monsterIndex);
+             console.log('cannot go back index is ' + index);
         }
     };
 
     const onPressRight =()=>{
       
-       if(monsterIndex < partList.length-1){
-            console.log('can go forward');
-            setMonsterIndex(monsterIndex + 1);
-            newPart = partList[monsterIndex + 1];
-            setMonsterPart(newPart);
-            //console.log('Monster is now' + newPart.fullName);
-            console.log("sending back to build screen to change");
-            onMonsterChange(position, "next");
+       if(index < partList.length-1){
+            const direction = "next";
+            onMonsterChange(position, direction);
         }
         else {
-            console.log('No reload - cannot go forward index is ' + monsterIndex);
+            console.log('No reload - cannot go forward index is ' + index);
         }
     }
 
-    const basePath = '../images/';
 
-    //const monsterImage = `${basePath} + ${monsterPart.imagePath}.png`;
-    //const monsterImage = require(`../images/${monsterPart.imagePath}.png`);
-    return (
+       return (
         <View style={ {
             height: 155,
             width: 'auto',

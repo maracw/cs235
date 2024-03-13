@@ -1,10 +1,9 @@
 import React from 'react';
-import { Image, Dimensions, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import imageIndex from '../data/imageIndex';
 
 const MonsterImage = ({id}) =>{
 
-    const imageOk = require('../images/Dracula-1.png');
     const dynamicImage = imageIndex[id];
 
     return <Image style={styles.imageStyle} source={dynamicImage}></Image>
