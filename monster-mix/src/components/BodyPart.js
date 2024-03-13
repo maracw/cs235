@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import MonsterImage from "./MonsterImage";
 
 
 const BodyPart = ({position, partList, index, onMonsterChange}) => {
@@ -35,10 +36,14 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
             console.log('No reload - cannot go forward index is ' + monsterIndex);
         }
     }
-   
+
+    const basePath = '../images/';
+
+    //const monsterImage = `${basePath} + ${monsterPart.imagePath}.png`;
+    //const monsterImage = require(`../images/${monsterPart.imagePath}.png`);
     return (
         <View style={ {
-            height: 100,
+            height: 155,
             width: 'auto',
             borderWidth: 3,
             marginBottom: 5,
@@ -51,8 +56,13 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
         }}>
             <TouchableOpacity onPress={()=>{onPressLeft()}}>
                 <Text>Previous!</Text>
+                <Text style={{fontSize: 32, fontWeight: 'bold'}}>{monsterPart.namePart}</Text>
             </TouchableOpacity>
-            <Text style={{fontSize: 32, fontWeight: 'bold'}}>{monsterPart.namePart} {monsterIndex}</Text>
+            
+            <View style={styles.body}>
+               
+                <MonsterImage id={monsterPart.id}></MonsterImage>
+            </View>
             <TouchableOpacity onPress={()=>{onPressRight()}}>
                 <Text>Next!</Text>
             </TouchableOpacity>
@@ -63,13 +73,22 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
 
 const styles=StyleSheet.create({
     containerStyle : {
-        height: 100,
+        height: 150,
         width: 'auto',
         borderWidth: 3,
         marginBottom: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    
+    body : {
+        flexDirection: 'column',
+        flex: 1,
+
+    },
+    buttonStyle :{
+        flex: .2,
     }
 });
 

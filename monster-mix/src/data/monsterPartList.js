@@ -1,72 +1,86 @@
 const topMonsterParts =[
     {
-        id: 0,
+        id: 'Dracula-top',
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
-        namePart: 'DRA'
+        namePart: 'DRA',
+        imagePath: 'Dracula-1.png',
+        monsterImage : '../images/Dracula-1.png'
     },
     {
-        id: 1,
+        id: 'Unicorn-top',
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'U',
+        imagePath: 'Unicorn-1.png',
     },
     {
-        id: 2,
-        fullName: 'Jackalope',
+        id: 'Merperson-top',
+        fullName: 'Merperson',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
-        namePart: 'JACK',
+        namePart: 'MER',
+        imagePath: 'Mer-2.png',
     },
 ];
 
 const midMonsterParts = [
     {
-        id: 0,
+        id: 'Dracula-middle',
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
-        namePart: 'CU'
+        namePart: 'CU',
+        imagePath: 'Dracula-2.png',
+        monsterImage : '../images/Dracula-2.png'
+
     },
     {
-        id: 1,
+        id: 'Unicorn-middle',
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'NI',
+        imagePath: 'Unicorn-2.png',
     },
     {
-        id: 2,
-        fullName: 'Jackalope',
+        id: 'Merperson-middle',
+        fullName: 'Merperson',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
-        namePart: 'A',
+        namePart: 'PER',
+        imagePath: 'Mer-3.png',
     },
 ];
 
 const bottomMonsterParts = [
     {
-        id: 0,
+        id: 'Dracula-bottom',
         fullName: 'Dracula',
         tempBgColor: 'red',
         tempBorderColor: 'black',
-        namePart: 'LA'
+        namePart: 'LA',
+        imagePath: 'Dracula-3.png',
+        monsterImage : '../images/Dracula-3.png'
+
     },
     {
-        id: 1,
+        id: 'Unicorn-bottom',
         fullName: 'Unicorn',
         tempBgColor: 'pink',
         tempBorderColor: 'purple',
         namePart: 'CORN',
+        imagePath: 'Unicorn-1.png',
     },
     {
-        id: 2,
-        fullName: 'Jackalope',
+        id: 'Merperson-bottom',
+        fullName: 'Merperson',
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
-        namePart: 'LOPE',
+        namePart: 'SON',
+        imagePath: 'Mer-3.png',
     },];
 
 export {topMonsterParts, midMonsterParts, bottomMonsterParts};

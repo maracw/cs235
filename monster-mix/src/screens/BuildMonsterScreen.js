@@ -75,7 +75,9 @@ const BuildMonsterScreen = ()=>{
 
 const styles = StyleSheet.create({
     container: {
-    
+        marginHorizontal: 0,
+        width: 350,
+        height: 'auto'
       },
       title: {
         color: 'red',
