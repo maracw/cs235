@@ -1,19 +1,34 @@
 import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import MonsterImage from "./MonsterImage";
+import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
-const BodyPart = ({position, partList, index, onMonsterChange}) => {
-    
+const BodyPart = ({position, index, onPrev, onNext}) => {
+    console.log(index+position);
+
+        let listName = '';
+        if (position == 'top'){
+            listName = topMonsterParts;
+        }
+        else if (position=='bottom') {
+            listName=bottomMonsterParts;
+        }
+        else {
+            listName = midMonsterParts;
+        }
+        
     //const [monsterIndex, setMonsterIndex] = useState(index);
     //const [monsterPart, setMonsterPart] = useState(partList[index]);
     //no longer state
-    const monsterPart = partList[index];
+    const monsterPart = listName[index];
+    console.log(monsterPart);
 
    
     function onPressLeft () {
         if(index > 0){
-            onMonsterChange(position, "previous");
+            onPrev();
         }
         else {
              console.log('cannot go back index is ' + index);
@@ -22,7 +37,7 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
 
     const onPressRight =()=>{
       
-       if(index < partList.length-1){
+       if(index < 2){
             const direction = "next";
             onMonsterChange(position, direction);
         }
@@ -41,11 +56,11 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: monsterPart.tempBgColor,
-            borderColor: monsterPart.tempBorderColor
+            //backgroundColor: monsterPart.tempBgColor,
+            //borderColor: monsterPart.tempBorderColor
 
         }}>
-            <TouchableOpacity onPress={()=>{onPressLeft()}}>
+            <TouchableOpacity onPress={()=>{onPrev()}}>
                 <Text>Previous!</Text>
                 <Text style={{fontSize: 32, fontWeight: 'bold'}}>{monsterPart.namePart}</Text>
             </TouchableOpacity>
@@ -54,7 +69,7 @@ const BodyPart = ({position, partList, index, onMonsterChange}) => {
                
                 <MonsterImage id={monsterPart.id}></MonsterImage>
             </View>
-            <TouchableOpacity onPress={()=>{onPressRight()}}>
+            <TouchableOpacity onPress={()=>{onNext()}}>
                 <Text>Next!</Text>
             </TouchableOpacity>
 
