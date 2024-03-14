@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import MonsterImage from "./MonsterImage";
 import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 const BodyPart = ({position, index, onPrev, onNext}) => {
@@ -23,11 +22,12 @@ const BodyPart = ({position, index, onPrev, onNext}) => {
     //const [monsterPart, setMonsterPart] = useState(partList[index]);
     //no longer state
     const monsterPart = listName[index];
-    console.log(monsterPart);
+    //console.log(monsterPart);
 
    
     function onPressLeft () {
         if(index > 0){
+            console.log(index);
             onPrev();
         }
         else {
@@ -37,9 +37,9 @@ const BodyPart = ({position, index, onPrev, onNext}) => {
 
     const onPressRight =()=>{
       
-       if(index < 2){
+       if(index < 3){
             const direction = "next";
-            onMonsterChange(position, direction);
+            onNext();
         }
         else {
             console.log('No reload - cannot go forward index is ' + index);
@@ -56,20 +56,20 @@ const BodyPart = ({position, index, onPrev, onNext}) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            //backgroundColor: monsterPart.tempBgColor,
-            //borderColor: monsterPart.tempBorderColor
+            backgroundColor: monsterPart.tempBgColor,
+            borderColor: monsterPart.tempBorderColor
 
         }}>
-            <TouchableOpacity onPress={()=>{onPrev()}}>
+            
+            <TouchableOpacity onPress={()=>{onPressLeft()}}>
                 <Text>Previous!</Text>
-                <Text style={{fontSize: 32, fontWeight: 'bold'}}>{monsterPart.namePart}</Text>
             </TouchableOpacity>
             
             <View style={styles.body}>
                
                 <MonsterImage id={monsterPart.id}></MonsterImage>
             </View>
-            <TouchableOpacity onPress={()=>{onNext()}}>
+            <TouchableOpacity onPress={()=>{onPressRight()}}>
                 <Text>Next!</Text>
             </TouchableOpacity>
 

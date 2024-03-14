@@ -22,7 +22,15 @@ const topMonsterParts =[
         tempBgColor: 'yellow',
         tempBorderColor: 'red',
         namePart: 'MER',
-        imagePath: 'Mer-2.png',
+        imagePath: 'Mer-1.png',
+    },
+    {
+        id: 'Yeti-top',
+        fullName: 'Yeti',
+        tempBgColor: 'cyan',
+        tempBorderColor: 'black',
+        namePart: 'YE',
+        imagePath: 'Yeti-1.png',
     },
 ];
 
@@ -53,6 +61,14 @@ const midMonsterParts = [
         namePart: 'PER',
         imagePath: 'Mer-3.png',
     },
+    {
+        id: 'Yeti-middle',
+        fullName: 'Yeti',
+        tempBgColor: 'cyan',
+        tempBorderColor: 'black',
+        namePart: 'EEEE',
+        imagePath: 'Yeti-2.png',
+    },
 ];
 
 const bottomMonsterParts = [
@@ -81,6 +97,14 @@ const bottomMonsterParts = [
         tempBorderColor: 'red',
         namePart: 'SON',
         imagePath: 'Mer-3.png',
-    },];
+    },    {
+        id: 'Yeti-bottom',
+        fullName: 'Yeti',
+        tempBgColor: 'cyan',
+        tempBorderColor: 'black',
+        namePart: 'TI',
+        imagePath: 'Yeti-3.png',
+    },
+];
 
 export {topMonsterParts, midMonsterParts, bottomMonsterParts};

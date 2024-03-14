@@ -18,6 +18,10 @@ const imageIndex = {
 
     'Merperson-bottom': require('../images/Mer-3.png'),
 
+    'Yeti-top': require('../images/Yeti-1.png'),
+    'Yeti-middle': require('../images/Yeti-2.png'),
+    'Yeti-bottom': require('../images/Yeti-3.png'),
+
     };
     
     export default imageIndex;
