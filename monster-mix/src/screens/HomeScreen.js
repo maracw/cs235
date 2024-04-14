@@ -37,6 +37,7 @@ const HomeScreen = ()=>{
         }
       };
     //could these buttons be a reusable component for easier styling?
+    console.log(playerName);
     return (
         <View style={styles.container}>
             <Text>Welcome {playerName}</Text>
@@ -48,7 +49,8 @@ const HomeScreen = ()=>{
              placeholder="Enter a new name"></TextInput>
              <Button title="Change Name" onPress={changeName} />
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("Build")}>
+                <TouchableOpacity style={styles.buttonStyle} 
+                    onPress={()=>navigation.navigate("Build", { playerName: playerName })}>
                     <Text style={styles.buttonText}>Mix a new Monster</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("About")}>

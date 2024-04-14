@@ -5,7 +5,7 @@ import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/mons
 
 
 const BodyPart = ({position, index, onPrev, onNext}) => {
-    console.log(index+position);
+    //console.log(index+position);
 
         let listName = '';
         if (position == 'top'){
