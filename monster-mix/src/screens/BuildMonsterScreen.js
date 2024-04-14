@@ -2,7 +2,7 @@ import React, {useState, useReducer} from "react";
 import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
 import BodyPart from "../components/BodyPart";
 import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
-import monsterList from '../data/monsterList';
+//import monsterList from '../data/monsterList';
 
 const LIST_LENGTH = 4;
 const INCREMENT = 1;
@@ -43,7 +43,6 @@ const BuildMonsterScreen = ()=>{
     const [monsterName, setMonsterName] = useState("Marty");
 
     console.log("LINE 16 reloaded top is " +top + " mid is " + mid + " bottom is " + bottom);
-    //console.log("test count is " + testCount);
 
     const randomMonster = ()=>{
         const randomTop = Math.floor(Math.random()*LIST_LENGTH);
@@ -52,39 +51,11 @@ const BuildMonsterScreen = ()=>{
         dispatch({type: 'random', payload: {randomTop, randomMid, randomBot}});     
     }
 
-   async function changeMonsterIndex (position, direction) {
-        console.log("change called in parent for " + position + ' '+ direction);
-        if (position=="top"){
-            console.log('inside first block');
-            if (direction=="next"){
-                setTopIndex(topIndex+1);
-                setTopPart(topIndex+1);
-            }
-            else{
-                setTopIndex(topIndex-1);
-                setTopPart(topIndex-1)
-            }
-            }
-        else if(position=="middle"){
-            direction=="next"? setMidIndex(midIndex+1) : setMidIndex(midIndex-1);
-        }
-        else {
-            direction=="next"? setBottomIndex(bottomIndex+1) : setBottomIndex(bottomIndex-1);
-        }
-        //console.log("LINE 41 changed top to " + topIndex);
-    };
-
     const resetMonsterParts = () =>{
         console.log('reset called');
         dispatch({type: 'reset'});
-        
-        // else {
-        //     console.log('no reset needed for topIndex' + topIndex);
-        // }
-        //topIndex!==0? setTopIndex(0) : null;
-        //midIndex!=0? setMidIndex(0): null;
-        //bottomIndex!=0? setBottomIndex(0): null;
     };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Build a Monster Here!</Text>
