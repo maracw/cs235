@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from "@react-navigation/native";
 
 //setter function for using SecureStorage
 async function save(key, value) {
@@ -18,7 +19,7 @@ async function save(key, value) {
     }
   }
 const HomeScreen = ()=>{
-
+    const navigation = useNavigation(); 
     //create state variables for player name
     const [playerName, setPlayerName] = useState('');
     const [inputName, setInputName] = useState('');
@@ -33,7 +34,8 @@ const HomeScreen = ()=>{
             <Text>Welcome to Mix-A-Monster</Text>
             <Text>Enter your name:</Text>
             <TextInput></TextInput>
-            <Button title="Mix a new Monster"></Button>
+            <Button title="Mix a new Monster" onPress={()=>navigation.navigate("Build")}></Button>
+            <Button title="About this app" onPress={()=>navigation.navigate("About")}></Button>
         </View>
     );
 };
