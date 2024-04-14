@@ -1,10 +1,39 @@
-import React from "react";
-import {Text, View, StyleSheet} from 'react-native';
+import React, { useEffect, useState } from "react";
+import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
+//setter function for using SecureStorage
+async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
+
+//getter function for using SecureStorage
+  async function getValueFor(key, setter) {
+    let result = await SecureStore.getItemAsync(key);
+    if (result) {
+      setter(result); 
+    } else {
+      setter("Friend"); // Set to "Friend" if no value is stored
+      await save(key, "Friend"); // Optionally, save "Friend" as the default name
+    }
+  }
 const HomeScreen = ()=>{
+
+    //create state variables for player name
+    const [playerName, setPlayerName] = useState('');
+    const [inputName, setInputName] = useState('');
+
+    //useEffect on 1st render
+    useEffect (()=>{
+        getValueFor("name", setPlayerName);
+    }, []);
+
     return (
         <View>
             <Text>Welcome to Mix-A-Monster</Text>
+            <Text>Enter your name:</Text>
+            <TextInput></TextInput>
+            <Button title="Mix a new Monster"></Button>
         </View>
     );
 };
