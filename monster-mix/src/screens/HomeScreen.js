@@ -29,12 +29,25 @@ const HomeScreen = ()=>{
         getValueFor("name", setPlayerName);
     }, []);
 
+    const changeName = async () => {
+        if (inputName.trim() !== '') {
+          await save("name", inputName); 
+          setPlayerName(inputName);
+          setInputName('');
+        }
+      };
+    //could these buttons be a reusable component for easier styling?
     return (
-        <View>
-            <Text>Welcome to Mix-A-Monster</Text>
+        <View style={styles.container}>
+            <Text>Welcome {playerName}</Text>
             <Text>Enter your name:</Text>
-            <TextInput></TextInput>
-            <View style={styles.containerStyle}>
+            <TextInput 
+             style={styles.input}
+             onChangeText={setInputName}
+             value={inputName}
+             placeholder="Enter a new name"></TextInput>
+             <Button title="Change Name" onPress={changeName} />
+            <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("Build")}>
                     <Text style={styles.buttonText}>Mix a new Monster</Text>
                 </TouchableOpacity>
@@ -48,7 +61,14 @@ const HomeScreen = ()=>{
 };
 
 const styles = StyleSheet.create({
-    containerStyle :{
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+      },
+    buttonContainer :{
         marginHorizontal: 15,
         marginBottom: 30,
         flexDirection:"column",
@@ -68,7 +88,15 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontSize: 18,
         textAlign: 'center'
-    }
+    }, 
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        width: '80%',
+        borderColor: 'gray',
+      },
 });
 
 export default HomeScreen;
