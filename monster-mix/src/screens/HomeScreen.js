@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
+import {Text, View, StyleSheet, Button, TextInput, TouchableOpacity} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "@react-navigation/native";
 
@@ -34,12 +34,41 @@ const HomeScreen = ()=>{
             <Text>Welcome to Mix-A-Monster</Text>
             <Text>Enter your name:</Text>
             <TextInput></TextInput>
-            <Button title="Mix a new Monster" onPress={()=>navigation.navigate("Build")}></Button>
-            <Button title="About this app" onPress={()=>navigation.navigate("About")}></Button>
+            <View style={styles.containerStyle}>
+                <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("Build")}>
+                    <Text style={styles.buttonText}>Mix a new Monster</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("About")}>
+                    <Text style={styles.buttonText}>About this app</Text>
+                </TouchableOpacity>
+            </View>
+
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    containerStyle :{
+        marginHorizontal: 15,
+        marginBottom: 30,
+        flexDirection:"column",
+        justifyContent: 'space-between',
+       
+    },
+    buttonStyle : {
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems:'center',
+        backgroundColor: "pink",
+        padding: 10,
+        margin: 15,
+       
+    },
+    buttonText : {
+        color: 'blue',
+        fontSize: 18,
+        textAlign: 'center'
+    }
+});
 
 export default HomeScreen;
