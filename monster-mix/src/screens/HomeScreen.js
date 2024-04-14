@@ -53,6 +53,9 @@ const HomeScreen = ()=>{
                     onPress={()=>navigation.navigate("Build", { playerName: playerName })}>
                     <Text style={styles.buttonText}>Mix a new Monster</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("Gallery")}>
+                    <Text style={styles.buttonText}>View Gallery</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonStyle} onPress={()=>navigation.navigate("About")}>
                     <Text style={styles.buttonText}>About this app</Text>
                 </TouchableOpacity>

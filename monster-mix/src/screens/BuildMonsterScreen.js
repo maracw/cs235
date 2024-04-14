@@ -92,10 +92,15 @@ const BuildMonsterScreen = ({route})=>{
     const saveMonster = async ()=>{
         const monsterToSend = buildMonsterResult();
         console.log(monsterToSend);
-        if(monsterToSend) {
-            await save("userMonster", monsterToSend); 
+        const stringMonster=JSON.stringify(monsterToSend);
+        console.log(stringMonster);
+        try {
+            await save("userMonster", stringMonster);
+            //navigation.navigate("Gallery");
+        } catch (error) {
+            console.log(error);
         }
-        
+
     }
     const randomMonster = ()=>{
         const randomTop = Math.floor(Math.random()*LIST_LENGTH);
@@ -155,7 +160,7 @@ const BuildMonsterScreen = ({route})=>{
             </TouchableOpacity>
             
             <TouchableOpacity  style={styles.buttonStyle} 
-            onPress={()=>{buildMonsterResult()}}>
+            onPress={()=>{saveMonster()}}>
                 <Text style={styles.buttonText}>Save</Text>
             </TouchableOpacity>
         </View>
