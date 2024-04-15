@@ -19,11 +19,13 @@ const GalleryScreen = ()=>{
     const [madeBy, setMadeBy] = useState();
     const [monsterName, setMonsterName] = useState();
     const [compoundName, setCompoundName] = useState();
+    const[fullMonsterString, setFullMonsterString] = useState();
 
     useEffect(()=>{
        getValueFor("madeBy", setMadeBy);
        getValueFor("monsterName", setMonsterName);
        getValueFor ("compoundName", setCompoundName);
+       getValueFor("fullMonster", setFullMonsterString);
     }, []);
 
     return (
@@ -34,6 +36,8 @@ const GalleryScreen = ()=>{
                 {monsterName? <Text style={styles.monsterNameStyle}>and it is named {monsterName}</Text> : null}
                 {compoundName? <Text style={styles.monsterTypeStyle}>and it is a {compoundName}</Text> : null}
             </View>
+            <Text>The full monster string is</Text>
+            <Text>{fullMonsterString? fullMonsterString : "no string found" }</Text>
         </ScrollView>
     );
 };

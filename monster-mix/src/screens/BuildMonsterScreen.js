@@ -53,13 +53,25 @@ async function getValueFor(key, setter) {
 const BuildMonsterScreen = ({route})=>{
     const navigation = useNavigation(); 
     const [isSaved, setIsSaved] = useState(false);
+
     const [state, dispatch] = useReducer(reducer, {top :0, mid: 0, bottom:0});
     const {top, mid, bottom} = state;
 
     const [topName, midName, bottomName] = [topMonsterParts[top].namePart, midMonsterParts[mid]
 .namePart, bottomMonsterParts[bottom].namePart];
+
     const [monsterName, setMonsterName] = useState('');
     const [inputName, setInputName] = useState('');
+
+    //object to try to parse after sending
+    const [fullMonster, setFullMonster] = useState({
+        madeBy: route.params.playerName,
+        monsterName: monsterName,
+        compoundName: `${topName}-${midName}-${bottomName}`,
+        topIndex: top,
+        midIndex: mid,
+        bottomIndex: bottom
+    })
 
     const changeMonsterName = async () => {
         if (inputName.trim() !== '') {
@@ -68,7 +80,13 @@ const BuildMonsterScreen = ({route})=>{
           setIsSaved(false);
         }
       };
-    
+    const updateFullMonster=()=>{
+        const newMonster = [{...fullMonster}, {monsterName:monsterName}];
+    }
+    const fullMonsterToString = () =>{
+        return JSON.stringify(fullMonster);
+    };
+
     const saveMonsterKVP = async ()=>{
         try {
             await save("madeBy", route.params.playerName);
@@ -77,6 +95,8 @@ const BuildMonsterScreen = ({route})=>{
             //await save("mid", mid);
             //await save("bottom", bottom);
             await save("compoundName", `${topName}-${midName}-${bottomName}`);
+            updateFullMonster();
+            await save("fullMonster", fullMonsterToString());
             setIsSaved(true);
         } catch (error) {
             console.log(error);
