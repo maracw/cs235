@@ -4,7 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "@react-navigation/native";
 import BodyPart from "../components/BodyPart";
 import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
-//import monsterList from '../data/monsterList';
+
 
 const LIST_LENGTH = 4;
 const INCREMENT = 1;
@@ -50,18 +50,9 @@ async function getValueFor(key, setter) {
     }
 };
 
-async function getPlayerName() {
-    let result = await SecureStore.getItemAsync("name");
-    if (result) {
-    return (result); 
-    } else {
-        console.log("no player name found");
-        return null;
-    }
-};
-
 const BuildMonsterScreen = ({route})=>{
-    console.log(route.params.playerName);
+    const navigation = useNavigation(); 
+    const [isSaved, setIsSaved] = useState(false);
     const [state, dispatch] = useReducer(reducer, {top :0, mid: 0, bottom:0});
     const {top, mid, bottom} = state;
 
@@ -70,35 +61,23 @@ const BuildMonsterScreen = ({route})=>{
     const [monsterName, setMonsterName] = useState('');
     const [inputName, setInputName] = useState('');
 
-    // const [playerName, setPlayerName] = useState(route.playerName);
-
-    const buildMonsterResult = ()=>{
-        let monster = {
-            madeBy: route.params.playerName,
-            monsterName: monsterName,
-            top: top,
-            mid: mid,
-            bottom: bottom,
-            compoundName : `${topName}-${midName}-${bottomName}`,
-        }
-        return monster;
-    }
     const changeMonsterName = async () => {
         if (inputName.trim() !== '') {
           setMonsterName(inputName);
           setInputName('');
+          setIsSaved(false);
         }
       };
     
-    
-    const saveMonster = async ()=>{
-        const monsterToSend = buildMonsterResult();
-        console.log(monsterToSend);
-        const stringMonster=JSON.stringify(monsterToSend);
-        console.log(stringMonster);
+    const saveMonsterKVP = async ()=>{
         try {
-            await save("userMonster", stringMonster);
-            //navigation.navigate("Gallery");
+            await save("madeBy", route.params.playerName);
+            await save("monsterName", monsterName);
+            //await save("top", top);
+            //await save("mid", mid);
+            //await save("bottom", bottom);
+            await save("compoundName", `${topName}-${midName}-${bottomName}`);
+            setIsSaved(true);
         } catch (error) {
             console.log(error);
         }
@@ -119,6 +98,7 @@ const BuildMonsterScreen = ({route})=>{
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Build a Monster Here!</Text>
+            
             <TextInput style={styles.inputStyle}  
             placeholder='Name your monster'
             value={inputName}
@@ -126,6 +106,14 @@ const BuildMonsterScreen = ({route})=>{
             ></TextInput>
             <Button title="Change Name" onPress={changeMonsterName} />
 
+            {isSaved? <View><Text>Your Monster has been saved!</Text>
+                <TouchableOpacity style={styles.buttonStyle} onPress={()=>{
+                    setIsSaved(false);
+                    navigation.navigate("Gallery")}}><Text>Gallery!</Text></TouchableOpacity>
+                </View> : <TouchableOpacity  style={styles.buttonStyle} 
+            onPress={()=>{saveMonsterKVP()}}>
+                <Text style={styles.buttonText}>Save</Text>
+            </TouchableOpacity>}
             <View style={styles.nameContainer} >
                 <Text style={styles.nameStyle}>{monsterName}</Text>
                 <Text>the</Text>
@@ -161,10 +149,6 @@ const BuildMonsterScreen = ({route})=>{
                 <Text style={styles.buttonText}>random</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity  style={styles.buttonStyle} 
-            onPress={()=>{saveMonster()}}>
-                <Text style={styles.buttonText}>Save</Text>
-            </TouchableOpacity>
         </View>
 
         </ScrollView>
