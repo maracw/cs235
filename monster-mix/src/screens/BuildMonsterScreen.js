@@ -76,8 +76,10 @@ const BuildMonsterScreen = ({route})=>{
         let monster = {
             madeBy: route.params.playerName,
             monsterName: monsterName,
-            bodyParts: {state},
-            compoundSpeciesName : `${topName}-${midName}-${bottomName}`,
+            top: top,
+            mid: mid,
+            bottom: bottom,
+            compoundName : `${topName}-${midName}-${bottomName}`,
         }
         return monster;
     }

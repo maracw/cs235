@@ -1,14 +1,23 @@
 import React from "react";
 import {View, Text, StyleSheet, Image} from 'react-native';
 
-const GalleryItem = () =>{
+const GalleryItem = ({monsterItem}) =>{
+
+    const madeBy = ()=>{
+        return !monsterItem.madeBy? "no made by" : monsterItem.madeBy;
+    }
+    const monsterName = ()=>{
+        return !monsterItem.monsterName? "no name" : monsterItem.monsterName;
+    }
     return (
         <View>
-            <Text>Single Gallery Item</Text>
+            <Text>{monsterName} is made by {madeBy}</Text>
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+});
 
 export default GalleryItem;
