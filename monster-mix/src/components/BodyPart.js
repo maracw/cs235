@@ -1,55 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import MonsterImage from "./MonsterImage";
+import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
 
 
-const BodyPart = ({onPressLeft,onPressRight, position, monster}) => {
-    let partName;
+const BodyPart = ({position, index, onPrev, onNext}) => {
+    //console.log(index+position);
 
-        if (position=="top"){
-            console.log(monster.fullName);
-            partName = monster.topName;
+        let listName = '';
+        if (position == 'top'){
+            listName = topMonsterParts;
         }
-        else if (position=="middle"){
-            partName=monster.midName;
+        else if (position=='bottom') {
+            listName=bottomMonsterParts;
         }
         else {
-            partName=monster.bottomName;
+            listName = midMonsterParts;
         }
-        console.log(partName +' '+ monster.fullName);
+        
+    //const [monsterIndex, setMonsterIndex] = useState(index);
+    //const [monsterPart, setMonsterPart] = useState(partList[index]);
+    //no longer state
+    const monsterPart = listName[index];
+    //console.log(monsterPart);
 
-    return (
+   
+    function onPressLeft () {
+        if(index > 0){
+            console.log(index);
+            onPrev();
+        }
+        else {
+             console.log('cannot go back index is ' + index);
+        }
+    };
+
+    const onPressRight =()=>{
+      
+       if(index < 3){
+            const direction = "next";
+            onNext();
+        }
+        else {
+            console.log('No reload - cannot go forward index is ' + index);
+        }
+    }
+
+
+       return (
         <View style={ {
-            height: 100,
+            height: 155,
             width: 'auto',
             borderWidth: 3,
             marginBottom: 5,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: monster.tempBgColor,
-            borderColor: monster.tempBorderColor
+            backgroundColor: monsterPart.tempBgColor,
+            borderColor: monsterPart.tempBorderColor
 
         }}>
-            <TouchableOpacity onPress={()=>{onPressLeft(monster.id)}}>
-                <Text>Left!</Text>
+            
+            <TouchableOpacity onPress={()=>{onPressLeft()}}>
+                <Text>Previous!</Text>
             </TouchableOpacity>
-            <Text style={{fontSize: 32, fontWeight: 'bold'}}>{partName} {position}</Text>
-            <TouchableOpacity onPress={()=>{onPressRight(monster.fullName)}}>
-                <Text>Right</Text>
+            
+            <View style={styles.body}>
+               
+                <MonsterImage id={monsterPart.id}></MonsterImage>
+            </View>
+            <TouchableOpacity onPress={()=>{onPressRight()}}>
+                <Text>Next!</Text>
             </TouchableOpacity>
+
         </View>
     );
 };
 
 const styles=StyleSheet.create({
     containerStyle : {
-        height: 100,
+        height: 150,
         width: 'auto',
         borderWidth: 3,
         marginBottom: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    
+    body : {
+        flexDirection: 'column',
+        flex: 1,
+
+    },
+    buttonStyle :{
+        flex: .2,
     }
 });
 
