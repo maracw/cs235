@@ -4,7 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "@react-navigation/native";
 import BodyPart from "../components/BodyPart";
 import {topMonsterParts, midMonsterParts, bottomMonsterParts} from '../data/monsterPartList';
-
+import MainButton from "../components/MainButton";
 
 const LIST_LENGTH = 4;
 const INCREMENT = 1;
@@ -124,16 +124,17 @@ const BuildMonsterScreen = ({route})=>{
             value={inputName}
             onChangeText={setInputName}
             ></TextInput>
-            <Button title="Change Name" onPress={changeMonsterName} />
+            <MainButton buttonContent="Change Name" onPress={changeMonsterName} buttonType="submit"/>
 
             {isSaved? <View><Text>Your Monster has been saved!</Text>
                 <TouchableOpacity style={styles.buttonStyle} onPress={()=>{
                     setIsSaved(false);
                     navigation.navigate("Gallery")}}><Text>Gallery!</Text></TouchableOpacity>
-                </View> : <TouchableOpacity  style={styles.buttonStyle} 
-            onPress={()=>{saveMonsterKVP()}}>
-                <Text style={styles.buttonText}>Save</Text>
-            </TouchableOpacity>}
+                </View> : <MainButton  
+                buttonType="submit" 
+            onPress={saveMonsterKVP}
+            buttonContent="Save">
+            </MainButton>}
             <View style={styles.nameContainer} >
                 <Text style={styles.nameStyle}>{monsterName}</Text>
                 <Text>the</Text>
@@ -157,17 +158,19 @@ const BuildMonsterScreen = ({route})=>{
                 index={bottom} />  
 
         <View  style={styles.buttonContainer}>
-            <TouchableOpacity 
-                style={styles.buttonStyle}
-                onPress={()=>{resetMonsterParts()}}>
-                <Text style={styles.buttonText}>Reset</Text>
-            </TouchableOpacity>
+            <MainButton 
+                buttonType="navigation"
+                onPress={resetMonsterParts}
+                buttonContent="Reset">
+               
+            </MainButton>
             
-            <TouchableOpacity 
-            style={styles.buttonStyle}
-            onPress={()=>{randomMonster()}}>
-                <Text style={styles.buttonText}>random</Text>
-            </TouchableOpacity>
+           <MainButton 
+            buttonType="navigation"
+            onPress={randomMonster}
+            buttonContent = "Random"
+            >
+            </MainButton>
             
         </View>
 
