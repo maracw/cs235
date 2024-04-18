@@ -17,9 +17,9 @@ const MainButton = ({onPress, buttonType, buttonContent}) =>{
     else {
         return (
             <TouchableOpacity 
-                style={styles.navigationStyle}
+                style={styles.submitStyle}
                 onPress={()=>{onPress()}}>
-                <Text style={styles.navigationText}>{buttonContent}</Text>
+                <Text style={styles.submitText}>{buttonContent}</Text>
             </TouchableOpacity>
         );
     }
@@ -28,17 +28,20 @@ const MainButton = ({onPress, buttonType, buttonContent}) =>{
 
 const styles=StyleSheet.create({
 submitText : {
-    color: 'gray',
+    color: 'white',
     fontSize: 18,
+    textAlign: 'center',
+    paddingVertical: 4,
 },
 submitStyle :{
     paddingHorizontal:5,
     borderRadius: 5,
     borderWidth: 3,
-    backgroundColor: 'black',
+    backgroundColor: 'gray',
+    marginBottom: 5,
 },
 navigationText : {
-    color: '#000',
+    color: '#fff',
     fontSize: 18,
     textAlign: 'center'
     },
@@ -46,7 +49,7 @@ navigationStyle : {
     borderWidth: 2,
     justifyContent: 'center',
     alignItems:'center',
-    backgroundColor: "#da6969",
+    backgroundColor: "#8B0000",
     padding: 10,    
     margin: 15,      
     },

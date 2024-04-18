@@ -6,40 +6,51 @@ import GalleryItem from "../components/GalleryItem";
 
 
 async function getValueFor(key, setter) {
+    console.log(key);
     let result = await SecureStore.getItemAsync(key);
     if (result) {
-      setter(result);
+      await setter(result);
     } else {
         console.log('no result');
     }
   };
 
+  async function getJsonObjectFromSecureStore (key, objSetter) {
+    let result = await SecureStore.getItemAsync("fullMonster");
+    if (result) {
+        const obj = JSON.parse(result);
+        await objSetter(obj);
+    } else {
+        console.log('no result');
+    }
+  };
+  
 const GalleryScreen = ()=>{
-    //const [firstMonster, setFirstMonster] = useState(null);
-    const [madeBy, setMadeBy] = useState();
-    const [monsterName, setMonsterName] = useState();
-    const [compoundName, setCompoundName] = useState();
+    const [firstMonster, setFirstMonster] = useState({});
     const[fullMonsterString, setFullMonsterString] = useState();
 
+
     useEffect(()=>{
-       getValueFor("madeBy", setMadeBy);
-       getValueFor("monsterName", setMonsterName);
-       getValueFor ("compoundName", setCompoundName);
-       getValueFor("fullMonster", setFullMonsterString);
+        getJsonObjectFromSecureStore("fullMonster", setFirstMonster);
     }, []);
 
-    return (
-        <ScrollView>
+    return (<View>
+        <Text>Try it</Text>
+        <Text>{firstMonster.madeBy} and name {firstMonster.monsterName} is a {firstMonster.compoundName}</Text>
+    </View>);
+    {/*
+    <ScrollView>
             <View style={styles.itemContainer}>
             <Text style={styles.titleStyle}>Gallery Screen</Text>
-                {madeBy? <Text style={styles.nameStyle}>There is a monster and it was made by {madeBy}</Text> : null}
-                {monsterName? <Text style={styles.monsterNameStyle}>and it is named {monsterName}</Text> : null}
-                {compoundName? <Text style={styles.monsterTypeStyle}>and it is a {compoundName}</Text> : null}
+                {firstMonster.madeBy? <Text style={styles.nameStyle}>There is a monster and it was made by {firstMonster.madeBy}</Text> : null}
+                {firstMonster.monsterName? <Text style={styles.monsterNameStyle}>and it is named {firstMonster.monsterName}</Text> : null}
+                {firstMonster.compoundName? <Text style={styles.monsterTypeStyle}>and it is a {firstMonster.compoundName}</Text> : null}
             </View>
             <Text>The full monster string is</Text>
             <Text>{fullMonsterString? fullMonsterString : "no string found" }</Text>
         </ScrollView>
-    );
+ */}
+       
 };
 
 const styles = StyleSheet.create({

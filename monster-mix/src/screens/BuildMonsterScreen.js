@@ -52,6 +52,7 @@ async function getValueFor(key, setter) {
 
 const BuildMonsterScreen = ({route})=>{
     const navigation = useNavigation(); 
+    const madeBy = route.params.playerName;
     const [isSaved, setIsSaved] = useState(false);
 
     const [state, dispatch] = useReducer(reducer, {top :0, mid: 0, bottom:0});
@@ -64,14 +65,14 @@ const BuildMonsterScreen = ({route})=>{
     const [inputName, setInputName] = useState('');
 
     //object to try to parse after sending
-    const [fullMonster, setFullMonster] = useState({
-        madeBy: route.params.playerName,
-        monsterName: monsterName,
-        compoundName: `${topName}-${midName}-${bottomName}`,
-        topIndex: top,
-        midIndex: mid,
-        bottomIndex: bottom
-    })
+    // const [fullMonster, setFullMonster] = useState({
+    //     madeBy: route.params.playerName,
+    //     monsterName: monsterName,
+    //     compoundName: `${topName}-${midName}-${bottomName}`,
+    //     topIndex: top,
+    //     midIndex: mid,
+    //     bottomIndex: bottom
+    // })
 
     const changeMonsterName = async () => {
         if (inputName.trim() !== '') {
@@ -80,23 +81,21 @@ const BuildMonsterScreen = ({route})=>{
           setIsSaved(false);
         }
       };
-    const updateFullMonster=()=>{
-        const newMonster = [{...fullMonster}, {monsterName:monsterName}];
-    }
-    const fullMonsterToString = () =>{
-        return JSON.stringify(fullMonster);
-    };
 
     const saveMonsterKVP = async ()=>{
+        const monsterToSend = {
+            madeBy: madeBy,
+            monsterName: monsterName,
+            compoundName: `${topName}-${midName}-${bottomName}`,
+            top: top,
+            mid: mid,
+            bottom: bottom,
+        }
         try {
-            await save("madeBy", route.params.playerName);
-            await save("monsterName", monsterName);
-            //await save("top", top);
-            //await save("mid", mid);
-            //await save("bottom", bottom);
-            await save("compoundName", `${topName}-${midName}-${bottomName}`);
-            updateFullMonster();
-            await save("fullMonster", fullMonsterToString());
+            //console.log('obj ' + monsterToSend);
+            const stringMonster = JSON.stringify(monsterToSend);
+            //console.log('string' + stringMonster);
+            await save("fullMonster", stringMonster);
             setIsSaved(true);
         } catch (error) {
             console.log(error);
@@ -118,23 +117,27 @@ const BuildMonsterScreen = ({route})=>{
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Build a Monster Here!</Text>
-            
-            <TextInput style={styles.inputStyle}  
-            placeholder='Name your monster'
-            value={inputName}
-            onChangeText={setInputName}
-            ></TextInput>
-            <MainButton buttonContent="Change Name" onPress={changeMonsterName} buttonType="submit"/>
-
+            <View>
+                <TextInput style={styles.inputStyle}  
+                    placeholder='Name your monster'
+                    value={inputName}
+                    onChangeText={setInputName}/>
+                <MainButton buttonContent="Change Name" 
+                    onPress={changeMonsterName} 
+                    buttonType="submit"/>
+            </View>
             {isSaved? <View><Text>Your Monster has been saved!</Text>
-                <TouchableOpacity style={styles.buttonStyle} onPress={()=>{
+                <MainButton onPress={()=>{
                     setIsSaved(false);
-                    navigation.navigate("Gallery")}}><Text>Gallery!</Text></TouchableOpacity>
+                    navigation.navigate("Gallery")}}
+                    buttonContent={"Gallery!"}
+                    buttonType="navigation" />
                 </View> : <MainButton  
-                buttonType="submit" 
-            onPress={saveMonsterKVP}
-            buttonContent="Save">
-            </MainButton>}
+                     buttonType="submit" 
+                    onPress={saveMonsterKVP}
+                    buttonContent="Save">
+                </MainButton>
+                }
             <View style={styles.nameContainer} >
                 <Text style={styles.nameStyle}>{monsterName}</Text>
                 <Text>the</Text>
@@ -157,25 +160,19 @@ const BuildMonsterScreen = ({route})=>{
                 position="bottom" 
                 index={bottom} />  
 
-        <View  style={styles.buttonContainer}>
+            <View  style={styles.buttonContainer}>
+                <MainButton 
+                    buttonType="navigation"
+                    onPress={resetMonsterParts}
+                    buttonContent="Reset"/>
+                
             <MainButton 
                 buttonType="navigation"
-                onPress={resetMonsterParts}
-                buttonContent="Reset">
-               
-            </MainButton>
-            
-           <MainButton 
-            buttonType="navigation"
-            onPress={randomMonster}
-            buttonContent = "Random"
-            >
-            </MainButton>
-            
-        </View>
-
+                onPress={randomMonster}
+                buttonContent = "Random"
+                />
+            </View>
         </ScrollView>
-
     );
 };
 
