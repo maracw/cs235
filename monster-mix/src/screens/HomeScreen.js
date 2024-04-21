@@ -40,6 +40,7 @@ const HomeScreen = ()=>{
     console.log(playerName);
     return (
         <View style={styles.container}>
+            <Text>MONSTER MIX</Text>
             <Text>Welcome {playerName}</Text>
             <Text>Enter your name:</Text>
             <TextInput 
