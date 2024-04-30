@@ -37,7 +37,7 @@ const HomeScreen = ()=>{
         }
       };
     //could these buttons be a reusable component for easier styling?
-    console.log(playerName);
+
     return (
         <View style={styles.container}>
             <Text>Welcome {playerName}</Text>

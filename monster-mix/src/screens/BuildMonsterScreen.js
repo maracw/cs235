@@ -64,16 +64,6 @@ const BuildMonsterScreen = ({route})=>{
     const [monsterName, setMonsterName] = useState('');
     const [inputName, setInputName] = useState('');
 
-    //object to try to parse after sending
-    // const [fullMonster, setFullMonster] = useState({
-    //     madeBy: route.params.playerName,
-    //     monsterName: monsterName,
-    //     compoundName: `${topName}-${midName}-${bottomName}`,
-    //     topIndex: top,
-    //     midIndex: mid,
-    //     bottomIndex: bottom
-    // })
-
     const changeMonsterName = async () => {
         if (inputName.trim() !== '') {
           setMonsterName(inputName);
